@@ -18,7 +18,7 @@ sudo pacman-key --populate archlinux holo
 sudo pacman -Syyu --needed base-devel linux-neptune-616-headers
 
 # It's been found that this one package NEEDS TO BE RE/INSTALLED AFTER "base-devel linux-neptune-616-headers" otherwise the nVidia driver won't see it along with "linux-neptune-616-headers" for some odd reason
-sudo pacman -Syyu --needed glibc
+sudo pacman -Syy glibc
 
 # Download the Linux x86_64 (64 bit) nVidia driver (in this case: https://us.download.nvidia.com/XFree86/Linux-x86_64/595.71.05/NVIDIA-Linux-x86_64-595.71.05.run ) for your specific GPU from nVidias website (YES. I KNOW. It goes against what everyone says about installing the one that comes with the distro but this does work and it is up to date)
 # This version of the driver - that needs to be downloaded from nVidias website - has been tested to work without complaint on both a 2080 SUPER and a 4060 Ti
