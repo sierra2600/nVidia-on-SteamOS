@@ -10,14 +10,14 @@ EOF
 # Path: /home/deck/.config/nvidia-update-hook.sh
 
 echo -e "Checking for GPUs"
-lspci -nd ::0300|awk '/10de/{print"nVidia GPU found";n=1}/8086/{print"Intel Graphics found and natively supported"}/1002/{print"AMD\/ATI APU\/GPU found and natively supported"}END{if(!n)print"No nVidia GPU found"}'
+lspci -nd ::0300|awk '/10de/{print"nVidia GPU found";n=1}/8086/{print"Intel Graphics found and natively supported"}/1002/{print"AMD\/ATI APU\/GPU found and natively supported"}END{if(!n)print"No nVidia GPU found";exit 1}'
 
 # If the module can be loaded natively, do nothing and continue booting
 if modprobe nvidia 2>/dev/null; then
 	exit 0
 fi
 
-echo -e "INFO : nVidia card found but the driver isn't installed\nDEBUG: Disabling Root readonly"
+echo -e "INFO : nVidia card found but the driver isn't installed"
 
 echo "Do you wish to install the nVidia Driver?"
 select yn in "Yes" "No"; do
@@ -27,6 +27,7 @@ select yn in "Yes" "No"; do
     esac
 done
 
+echo -e "DEBUG: Disabling Root readonly"
 sudo steamos-readonly disable
 
 echo -e "DEBUG: Initialize the Arch Package Manager Key File"
