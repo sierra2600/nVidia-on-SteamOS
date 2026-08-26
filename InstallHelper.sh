@@ -10,12 +10,7 @@ EOF
 # Path: /home/deck/.config/nvidia-update-hook.sh
 
 echo -e "Checking for GPUs"
-lspci -nd ::0300 | sed -e 's/.*10de:.*/PASS : nVidia GPU found/' \
-			-e 's/.*8086:.*/PASS : Intel Graphics found and natively supported/' \
-			-e 's/.*1002:.*/PASS : AMD\/ATI APU\/GPU found and natively supported/' | grep . || exit 1
-
-# Fail check: If nVidia isn't in the output string, abort immediately
-echo "$_gpu_report" | grep -q "NVIDIA" || { echo -e "FAIL : nVidia GPU Not found"; exit 1; }
+lspci -nd ::0300|awk '/10de/{print"nVidia GPU found";n=1}/8086/{print"Intel Graphics found and natively supported"}/1002/{print"AMD\/ATI APU\/GPU found and natively supported"}END{if(!n)print"No nVidia GPU found"}'
 
 # If the module can be loaded natively, do nothing and continue booting
 if modprobe nvidia 2>/dev/null; then
