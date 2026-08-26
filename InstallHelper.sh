@@ -1,3 +1,4 @@
+#!/bin/bash
 cat <<'EOF'
 Image your disk drive with Macrium Reflect, always make a backup of your boot drive before hand!!! This is not a suggestion either, Do It!!! Do It Now!!! Right Now!!!
 
