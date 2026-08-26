@@ -22,6 +22,15 @@ if modprobe nvidia 2>/dev/null; then
 fi
 
 echo -e "INFO : nVidia card found but the driver isn't installed\nDEBUG: Disabling Root readonly"
+
+echo "Do you wish to install the nVidia Driver?"
+select yn in "Yes" "No"; do
+    case $yn in
+        Yes ) break;;
+        No ) exit 1;;
+    esac
+done
+
 sudo steamos-readonly disable
 
 echo -e "DEBUG: Initialize the Arch Package Manager Key File"
