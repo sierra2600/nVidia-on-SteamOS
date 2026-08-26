@@ -62,6 +62,8 @@ chmod +x "$RUN_FILE"
 echo -e "DEBUG: The installer needs to be ran in sudo (Super User) and it needs this path to be provided or an odd error message will appear during install, without it it will still install but I don't want to take risks"
 sudo "$RUN_FILE" --glvnd-egl-config-path=/usr/share/glvnd/egl_vendor.d
 
+sudo rm -rf "$RUN_FILE"
+
 echo -e "DEBUG: Rebuild the 'Initial RAM Copy In Copy Out filesystem' (initramfs) as for some odd reason when you tell the installer to rebuild, it doesn't"
 sudo mkinitcpio -P
 
