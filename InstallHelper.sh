@@ -14,10 +14,11 @@ lspci -nd ::0300|awk '/10de/{print"nVidia GPU found";n=1}/8086/{print"Intel Grap
 
 # If the module can be loaded natively, do nothing and continue booting
 if modprobe nvidia 2>/dev/null; then
+	echo -e "nVidia Driver is running, exitting"
 	exit 0
+else
+	echo -e "INFO : nVidia card found but the driver isn't installed"
 fi
-
-echo -e "INFO : nVidia card found but the driver isn't installed"
 
 echo "Do you wish to install the nVidia Driver?"
 select yn in "Yes" "No"; do
