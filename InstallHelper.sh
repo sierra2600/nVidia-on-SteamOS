@@ -4,12 +4,11 @@ Image your disk drive with Macrium Reflect, always make a backup of your boot dr
 
 Currently these commands are intended to be copy and pasted into the Konsole
 
-Tell your SteamOS to unlock the root partition so the helping packages and the nVidia driver can be installed
+Checking for GPUs
 EOF
 
 # Path: /home/deck/.config/nvidia-update-hook.sh
 
-echo -e "Checking for GPUs"
 lspci -nd ::0300|awk '/10de/{print"nVidia GPU found";n=1}/8086/{print"Intel Graphics found and natively supported"}/1002/{print"AMD\/ATI APU\/GPU found and natively supported"}END{if(!n)print"No nVidia GPU found";exit 1}'
 
 # If the module can be loaded natively, do nothing and continue booting
