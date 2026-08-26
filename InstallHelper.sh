@@ -1,4 +1,8 @@
 #!/bin/bash
+
+echo -e "This script currently isn't working as the driver used within has some sort of issue working with something in the latest of SteamOS, please use Rich Stokes method"
+exit
+
 cat <<'EOF'
 Image your disk drive with Macrium Reflect, always make a backup of your boot drive before hand!!! This is not a suggestion either, Do It!!! Do It Now!!! Right Now!!!
 
