@@ -1,7 +1,8 @@
 # nVidia-on-SteamOS
 Helps install nVidia Drivers onto SteamOS (Game Mode/Gamescope may or may not work)
 
-This script currently isn't working as the driver used within has some sort of issue working with something in the latest of SteamOS, please use Rich Stokes method
+This script currently isn't working as the driver used within has ~~some sort of~~ +a space constraint+ issue ~~working~~ with ~~something~~ +the latest updates being installed via pacman+ in the latest of SteamOS, please use Rich Stokes method +until I figure out which of the smaller yet latest nVidia drivers will sit nicely into the root partition+
+
 
 !!! NOTICE !!! I WILL RECOMMEND READING INTO THE SHELL SCRIPTS BEFORE BLINDLY DOWNLOADING AND USING THEM!
 
